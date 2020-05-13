@@ -12,13 +12,13 @@ def webhook():
         "fulfillmentText": "Your appointment has been set for {} at {}".\
                         format(date, time)
     }
-    #response = json.dumps(data, indent=4)
-    #post = make_response(response)
-    #post.headers['Content-Type'] = 'application/json'
-    #print(post)
     return make_response(jsonify(data))
 
 def formatTimeAndDate(time, date):
+    """
+        format dates and time parameter from dialogflow to a
+        option.
+    """
     date = date.split('T')[0]
     hours, mins = time.split('T')[1].split('+')[0].split(':')[:2]
     period = ' am' if int(hours) < 12 else ' pm'
