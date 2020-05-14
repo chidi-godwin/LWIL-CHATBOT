@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "hello world"
+    return "<h1>hello world</h1>"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -33,4 +33,4 @@ def formatTimeAndDate(time, date):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
