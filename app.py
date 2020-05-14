@@ -3,6 +3,10 @@ import json
 import os
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return "hello world"
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
