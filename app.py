@@ -1,11 +1,11 @@
-from flask import Flask, request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify, render_template
 import json
 import os
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "<h1>hello world</h1>"
+    return render_template('index.html')
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
