@@ -12,22 +12,9 @@ def webhook():
     req = request.get_json(silent=True, force=True)
     action = req.setdefault('queryResult', {'acion': 'form'}).get('action')
     print(action)
-    if action == "appointment":
-        return make_response(appointment(req))
-    elif action == "form":
+    if action == "form":
         return make_response(form_response())
     
-    
-    
-    
-def appointment(data):
-    date, time = data.get('queryResult').get('parameters').values()
-    date, time = formatTimeAndDate(time, date)
-    data = {
-        "fulfillmentText": "Your appointment has been set for {} at {}".\
-                        format(date, time)
-    }
-    return jsonify(data)
 
 @app.route('/location', methods=['POST'])
 def location():
