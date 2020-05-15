@@ -36,19 +36,5 @@ def form_response():
     }
     return jsonify(data)
 
-def formatTimeAndDate(time, date):
-    """
-        format dates and time parameter from dialogflow to a
-        option.
-    """
-    date = date.split('T')[0]
-    hours, mins = time.split('T')[1].split('+')[0].split(':')[:2]
-    period = ' am' if int(hours) < 12 else ' pm'
-    hours = hours if int(hours) < 12 else str(int(hours)-12)
-    time = hours + ':' + mins + period
-    return (date, time)
-    
-
-
 if __name__ == '__main__':
     app.run()
